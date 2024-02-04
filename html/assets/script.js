@@ -45,22 +45,32 @@ $(function () {
   });
 
   document.onkeyup = function (data) {
+    let fieldValue = $("#inputUser").val();
+
+    if ($("#vorpTextarea").is(":visible")) {
+      fieldValue = $("#inpTextarea").val();
+    }
     if (data.which == 27) {
       // Escape key
       $.post(
-        "http://vorp_inputs/close",
+        "http://vorp_inputs/submit",
         JSON.stringify({
-          stringtext: "close",
+          stringtext: fieldValue,
         })
       );
     }
   };
 
   $("#closeButton").click(function () {
+    let fieldValue = $("#inputUser").val();
+
+    if ($("#vorpTextarea").is(":visible")) {
+      fieldValue = $("#inpTextarea").val();
+    }
     $.post(
-      "http://vorp_inputs/close",
+      "http://vorp_inputs/submit",
       JSON.stringify({
-        stringtext: "close",
+        stringtext: fieldValue,
       })
     );
   });
